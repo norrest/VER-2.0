@@ -1,5 +1,5 @@
 <div class="container">
-	<h1>Settings ( version 1.71)</h1>
+	<h1>Settings</h1>
 	<form class="form-horizontal" method="post">
 		<fieldset>
 			<legend>Player Name</legend>
@@ -28,13 +28,13 @@
 				<label class="control-label">Airplay</label>
 				<div class="controls">
 					<div class="toggle">
-						<label class="toggle-radio" for="toggleshairport2" >ON</label>
+						<label class="toggle-radio" for="toggleshairport-sync2" >ON</label>
 						
-$_system_select[shairport1]
+$_system_select[shairport-sync1]
 
-						<label class="toggle-radio" for="toggleshairport1">OFF</label>
+						<label class="toggle-radio" for="toggleshairport-sync1">OFF</label>
 
-$_system_select[shairport0]				
+$_system_select[shairport-sync0]				
 						
 					</div>
 				</div>
@@ -89,7 +89,81 @@ $_system_select[minidlna0]
 			</div>
 		</fieldset>
 	</form>
+	<form class="form-horizontal" method="post">
+		<fieldset>
+			<legend>Streaming Services</legend>
+			<p>Enable or disable Spotify©  Streaming Service (Requires a Spotify© Premium Account)</p>
+			<div class="control-group">
+				<label class="control-label">Spotify Service</label>
+				<div class="controls">
+					<div class="toggle">
+						<label class="toggle-radio" for="togglespotify2" >ON</label>
+						
+$_system_select[spotify1]
 
+						<label class="toggle-radio" for="togglespotify1">OFF</label>
+
+$_system_select[spotify0]				
+						
+					</div>
+				</div>
+			<div id="displayspotifyblock" class="control-group subgroup">	
+			<div class="control-group">
+				<label class="control-label" for="spotusername">Spotify Username</label>
+				<div class="controls">
+					<input class="input-large" class="input-block-level" type="text" id="spotusername" name="spotusername" value="$_spotusername" data-trigger="change" >
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="spotpassword">Spotify Password</label>
+				<div class="controls">
+					<input class="input-large" class="input-block-level" type="password" id="spotpassword" name="spotpassword" value="" data-trigger="change" >
+				</div>
+			</div>
+				
+			
+				<label class="control-label">Prefer Higher Quality Stream</label>
+				<div class="controls">
+					<div class="toggle">
+						<label class="toggle-radio" for="togglespotifybitrate2" >ON</label>
+						
+$_system_select[spotifybitrate1]
+
+						<label class="toggle-radio" for="togglespotifybitrate1">OFF</label>
+
+$_system_select[spotifybitrate0]				
+						
+					</div>
+				<p>
+				Retrieve 320kbps Streams. Turn this off if you experience dropouts or if you have bandwith concerns.
+			</p>	
+				</div>
+			</div>
+			</div>
+			<div class="form-actions">
+				<button class="btn btn-primary btn-large" value="apply" name="apply" type="submit">Apply</button>
+			</div>
+		</fieldset>
+	</form>
+	<div $_divi2s >
+	<form class="form-horizontal" method="post">
+		<fieldset>
+			<legend>I2S driver</legend>
+			<p>Activate i2s driver for Raspberry PI compatible i2s DACs</p>
+			<div class="control-group">
+				<label class="control-label">I2S DAC</label>
+				<div class="controls">
+					<select class="input-large" name="i2s">		
+$_i2s[i2s]
+					</select>
+				</div>
+			</div>		
+			<div class="form-actions">
+				<button class="btn btn-primary btn-large" value="apply" name="apply" type="submit">Apply</button>
+			</div>
+		</fieldset>
+	</form>
+	</div>
 <form class="form-horizontal" method="post">
 		<fieldset>
 			<legend>Miscellaneous</legend>
@@ -109,8 +183,6 @@ $_system_select[startupsound0]
 					</div>
 				</div>
 			</div>
-			<div class="control-group">
-						
 
 			<div class="form-actions">
 				<button class="btn btn-primary btn-large" value="apply" name="apply" type="submit">Apply</button>
@@ -217,4 +289,3 @@ $_system_select[cmediafix0]
 	</form>
 		-->
 </div>
-
