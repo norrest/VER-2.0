@@ -74,6 +74,7 @@ $db = 'sqlite:/var/www/db/player.db';
 // --- INITIALIZE ENVIRONMENT --- //
 // change /run and session files for correct session file locking
 sysCmd('chmod 777 /run');
+sysCmd('bash /bin/chkdata');
 
 // reset DB permission
 sysCmd('chmod -R 777 /var/www/db');
@@ -287,7 +288,7 @@ if (isset($_SESSION['cmediafix']) && $_SESSION['cmediafix'] == 1) {
 } 
 // Utilities to start with Volumio
 
-// shairport-sync for Airplay Capability
+// Shairport for Airplay Capability
 //Retrieve Output Device
 	$dbh = cfgdb_connect($db);
 	$query_cfg = "SELECT param,value_player FROM cfg_mpd WHERE value_player!=''";
@@ -307,10 +308,10 @@ if (isset($_SESSION['cmediafix']) && $_SESSION['cmediafix'] == 1) {
 playerSession('open',$db);
 $hostname = $_SESSION['hostname'];	
 
-// Start shairport-sync with Volumio name, stopping Mpd on start, with Selected output device
-if (isset($_SESSION['shairport-sync']) && $_SESSION['shairport-sync'] == 1) {
-	$tempfile = '/tmp/.restart_mpd'; // if this file exists, start playing mpd after shairport-sync stopped
-	$cmd = '/usr/local/bin/shairport-sync -a "'.$hostname.'" -w -B "(/usr/bin/mpc | grep -q playing && touch \''.$tempfile.'\'); /usr/bin/mpc stop" -E "test -f \''.$tempfile.'\' && /usr/bin/mpc play && rm -f \''.$tempfile.'\'" -o alsa -- -d plughw:'.$device.' > /dev/null 2>&1 &';
+// Start Shairport with Volumio name, stopping Mpd on start, with Selected output device
+if (isset($_SESSION['shairport']) && $_SESSION['shairport'] == 1) {
+	$tempfile = '/tmp/.restart_mpd'; // if this file exists, start playing mpd after shairport stopped
+	$cmd = '/usr/local/bin/shairport -a "'.$hostname.'" -w -B "(/usr/bin/mpc | grep -q playing && touch \''.$tempfile.'\'); /usr/bin/mpc stop" -E "test -f \''.$tempfile.'\' && /usr/bin/mpc play && rm -f \''.$tempfile.'\'" -o alsa -- -d plughw:'.$device.' > /dev/null 2>&1 &';
 	sysCmd($cmd);
 } 
 
