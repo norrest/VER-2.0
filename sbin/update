@@ -15,6 +15,7 @@ mkdir -p /lib/modules/4.4.8/kernel/sound/usb
 git clone https://github.com/norrest/VER-2.0.git /update/tmpi/
 sudo chmod -R 777 /update/tmpi
 sudo cp -pfR /update/tmpi/snd-usb-audio.ko /lib/modules/4.4.8/kernel/sound/usb/
+sudo rm -R /etc/apt/sources.list.d/
 sudo cp -pfR /update/tmpi/etc/ /
 sudo cp -pfR /update/tmpi/var/ /
 sudo cp -pfR /update/tmpi/sbin/ /
